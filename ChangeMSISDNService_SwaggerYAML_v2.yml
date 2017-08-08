@@ -1,0 +1,368 @@
+---
+swagger: '2.0'
+info:
+  description: This API is used for Change msisdn Service
+  version: 0.0.1
+  title: Change msisdn Service
+host: changemsisdnservice-dev.apps.px-01.cf.t-mobile.com
+basePath: "/atwork/accountmaintenance/msisdnchange/v1"
+schemes:
+- http
+- https
+consumes:
+- application/json
+produces:
+- application/json
+paths:
+  "/validate":
+    post:
+      description: Validate Change msisdn Service
+      operationId: postValidateChangeMsisdnService
+      responses:
+        '200':
+          description: Success
+          schema:
+            "$ref": "#/definitions/ChangeMsisdnValidateResponse"
+        default:
+          description: Error
+          schema:
+            "$ref": "#/definitions/Error"
+      parameters:
+      - name: Accept
+        in: header
+        required: true
+        description: Provide accept header
+        type: string
+      - name: Content-Type
+        in: header
+        required: true
+        description: Provide content type
+        type: string
+      - name: wcToken
+        in: header
+        required: true
+        description: Provide wcToken
+        type: string
+      - name: wcTrustedToken
+        in: header
+        required: true
+        description: Provide wcTrustedToken
+        type: string
+      - name: body
+        in: body
+        description: Provide Request Payload
+        schema:
+          "$ref": "#/definitions/ChangeMsisdnValidateRequest"
+  "/process":
+    post:
+      description: Process Change msisdn Service
+      operationId: postProcessChangeMsisdnService
+      responses:
+        '200':
+          description: Success
+          schema:
+            "$ref": "#/definitions/ChangeMsisdnProcessResponse"
+        default:
+          description: Error
+          schema:
+            "$ref": "#/definitions/Error"
+      parameters:
+      - name: Accept
+        in: header
+        required: true
+        description: Provide accept header
+        type: string
+      - name: Content-Type
+        in: header
+        required: true
+        description: Provide content type
+        type: string
+      - name: wcToken
+        in: header
+        required: true
+        description: Provide wcToken
+        type: string
+      - name: wcTrustedToken
+        in: header
+        required: true
+        description: Provide wcTrustedToken
+        type: string
+      - name: body
+        in: body
+        description: Provide Request Payload
+        schema:
+          "$ref": "#/definitions/ChangeMsisdnProcessRequest"
+  "/port-in/validate":
+    post:
+      description: Validate Change msisdn Port-in Service
+      operationId: postValidateChangeMsisdnPortInService
+      responses:
+        '200':
+          description: Success
+          schema:
+            "$ref": "#/definitions/ChangeMsisdnPortinValidateResponse"
+        default:
+          description: Error
+          schema:
+            "$ref": "#/definitions/Error"
+      parameters:
+      - name: Accept
+        in: header
+        required: true
+        description: Provide accept header
+        type: string
+      - name: Content-Type
+        in: header
+        required: true
+        description: Provide content type
+        type: string
+      - name: wcToken
+        in: header
+        required: true
+        description: Provide wcToken
+        type: string
+      - name: wcTrustedToken
+        in: header
+        required: true
+        description: Provide wcTrustedToken
+        type: string
+      - name: body
+        in: body
+        description: Provide Request Payload
+        schema:
+          "$ref": "#/definitions/ChangeMsisdnPortinValidateRequest"
+  "/port-in/process":
+    post:
+      description: Process Change msisdn Port-in Service
+      operationId: postProcessChangeMsisdnPortinService
+      responses:
+        '200':
+          description: Success
+          schema:
+            "$ref": "#/definitions/ChangeMsisdnPortinProcessResponse"
+        default:
+          description: Error
+          schema:
+            "$ref": "#/definitions/Error"
+      parameters:
+      - name: Accept
+        in: header
+        required: true
+        description: Provide accept header
+        type: string
+      - name: Content-Type
+        in: header
+        required: true
+        description: Provide content type
+        type: string
+      - name: wcToken
+        in: header
+        required: true
+        description: Provide wcToken
+        type: string
+      - name: wcTrustedToken
+        in: header
+        required: true
+        description: Provide wcTrustedToken
+        type: string
+      - name: body
+        in: body
+        description: Provide Request Payload
+        schema:
+          "$ref": "#/definitions/ChangeMsisdnPortinProcessRequest"
+  "/port-in/eligibilty":
+    get:
+      description: Change msisdn Port-in Eligibility Service
+      operationId: getEligibilityChangeMsisdnPortinService
+      responses:
+        '200':
+          description: Success
+          schema:
+            "$ref": "#/definitions/ChangeMsisdnCheckPortinEligibilityResponse"
+        default:
+          description: Error
+          schema:
+            "$ref": "#/definitions/Error"
+      parameters:
+      - name: Accept
+        in: header
+        required: true
+        description: Provide accept header
+        type: string
+      - name: Content-Type
+        in: header
+        required: true
+        description: Provide content type
+        type: string
+      - name: wcToken
+        in: header
+        required: true
+        description: Provide wcToken
+        type: string
+      - name: wcTrustedToken
+        in: header
+        required: true
+        description: Provide wcTrustedToken
+        type: string
+      - name: Msisdn
+        in: query
+        description: Provide wcTrustedToken
+        required: true
+        type: string
+definitions:
+  ErrorResponse:
+    type: object
+    properties:
+      error:
+        description: Used to pass error information in a response.
+        type: array
+        items:
+          "$ref": "#/definitions/Error"
+  Error:
+    type: object
+    properties:
+      code:
+        type: string
+      userMessage:
+        type: string
+  ChangeMsisdnValidateRequest:
+    type: object
+    properties:
+      msisdn:
+        type: string
+      orgId:
+        type: string
+      logonId:
+        type: string
+  ChangeMsisdnValidateResponse:
+    type: object
+    properties:
+      status:
+        type: string
+      message:
+        type: string
+      msisdn:
+        type: string
+      validationErrors:
+        type: array
+        items:
+          properties: {}
+  ChangeMsisdnProcessRequest:
+    type: object
+    properties:
+      BAN:
+        type: string
+      orgId:
+        type: string
+      reasonCode:
+        type: string
+      logonId:
+        type: string
+      email:
+        type: string
+      oldMSISDN:
+        type: string
+      npa:
+        type: string
+  ChangeMsisdnProcessResponse:
+    type: object
+    properties:
+      status:
+        type: string
+      message:
+        type: string
+      orderId:
+        type: string
+      orderItemId:
+        type: string
+      newMSISDN:
+        type: string
+  ChangeMsisdnPortinValidateRequest:
+    type: object
+    properties:
+      orgId:
+        type: string
+      portInDate:
+        type: string
+      oldMSISDN:
+        type: string
+      newMSISDN:
+        type: string
+  ChangeMsisdnPortinValidateResponse:
+    type: object
+    properties:
+      status:
+        type: string
+      message:
+        type: string
+      oldMSISDN:
+        type: string
+      newMSISDN:
+        type: string
+      portInAvailableDate:
+        type: string
+      portInAllowed:
+        type: string
+      ospCarrierId:
+        type: string
+      validationErrors:
+        type: array
+        items:
+          properties: {}
+  ChangeMsisdnPortinProcessRequest:
+    type: object
+    properties:
+      orgId:
+        type: string
+      logonId:
+        type: string
+      email:
+        type: string
+      BAN:
+        type: string
+      portInDate:
+        type: string
+      oldMSISDN:
+        type: string
+      newMSISDN:
+        type: string
+      reasonDescription:
+        type: string
+      reasonCode:
+        type: string
+      ospAccountPassword:
+        type: string
+      ospCarrierId:
+        type: string
+      ospAccount:
+        type: string
+  ChangeMsisdnPortinProcessResponse:
+    type: object
+    properties:
+      status:
+        type: string
+      message:
+        type: string
+      orderId:
+        type: string
+      orderItemId:
+        type: string
+      newMSISDN:
+        type: string
+      submitPortinRequestNo:
+        type: string
+  ChangeMsisdnCheckPortinEligibilityResponse:
+    type: object
+    properties:
+      status:
+        type: string
+      message:
+        type: string
+      numberToBePorted:
+        type: string
+      portInAvailableDate:
+        type: string
+      portInAllowed:
+        type: string
+      ospCarrierId:
+        type: string
